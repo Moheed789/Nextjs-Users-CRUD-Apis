@@ -1,17 +1,21 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
+var Schema = mongoose.Schema;
 
-const userSchema = new Schema(
-    {
-        name: String,
-        full_name: String,
-        email: String,
-        age: Number
+const userSchema = new Schema({
+    name: {
+        type: String
     },
-    {
-        timestamps: true
-    }
-)
+    full_name: {
+        type: String
+    },
+    email: {
+        type: String
+    },
+    age: {
+        type: Number
+    },
+}, {timestamps: true});
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.models.User || mongoose.model("user", userSchema);
 
 export default User;
